@@ -7,7 +7,8 @@ setup(
     install_requires=['flask'],
     entry_points={
         'console_scripts': {
-            'scope_demo=py_playground.flask.scope_demo:run'
+            'scope_demo=py_playground.flask.scope_demo:run',
+            'simple_wsgi=py_playground.web.simple_wsgi:start_simple_wsgi'
         }
     }
 )

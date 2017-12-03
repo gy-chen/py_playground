@@ -4,7 +4,7 @@ setup(
     name='py_playground',
     package_dir={'': 'src'},
     packages=find_packages('src'),
-    install_requires=['flask', 'matplotlib', 'numpy'],
+    install_requires=['flask', 'matplotlib', 'numpy', 'faker', 'websockets'],
     entry_points={
         'console_scripts': {
             'scope_demo=py_playground.flask.scope_demo:run',

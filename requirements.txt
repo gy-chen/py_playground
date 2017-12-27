@@ -3,3 +3,4 @@ numpy
 matplotlib
 faker
 websockets
+opencv-python

@@ -10,7 +10,8 @@ setup(
         'numpy',
         'faker',
         'websockets',
-        'opencv-python'
+        'opencv-python',
+        'pynput'
     ],
     entry_points={
         'console_scripts': {

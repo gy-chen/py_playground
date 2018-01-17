@@ -11,7 +11,8 @@ setup(
         'faker',
         'websockets',
         'opencv-python',
-        'pynput'
+        'pynput',
+        'pyaudio'
     ],
     entry_points={
         'console_scripts': {

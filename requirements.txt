@@ -4,3 +4,4 @@ matplotlib
 faker
 websockets
 opencv-python
+pyaudio

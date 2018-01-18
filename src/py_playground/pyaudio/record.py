@@ -20,12 +20,7 @@ def main():
 
         print("* done recording")
 
-    wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(pyaudio.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+    save_record(frames)
 
 
 if __name__ == '__main__':

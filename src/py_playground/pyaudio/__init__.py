@@ -1,7 +1,9 @@
 import audioop
 import contextlib
+import collections
 import math
 import pyaudio
+import wave
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
@@ -22,6 +24,17 @@ def get_input_stream(chunk=CHUNK, format=FORMAT, channels=CHANNELS, rate=RATE):
     finally:
         stream.stop_stream()
         p.terminate()
+
+
+def save_record(data, filename="output.wav", channels=CHANNELS, format=FORMAT, rate=RATE):
+    if isinstance(data, collections.Iterable):
+        data = b''.join(data)
+    wf = wave.open(filename, 'wb')
+    wf.setnchannels(channels)
+    wf.setsampwidth(pyaudio.get_sample_size(format))
+    wf.setframerate(rate)
+    wf.writeframes(data)
+    wf.close()
 
 
 def get_record_seconds(rate, data_size):

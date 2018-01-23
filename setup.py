@@ -12,7 +12,8 @@ setup(
         'websockets',
         'opencv-python',
         'pynput',
-        'pyaudio'
+        'pyaudio',
+        'google-cloud-speech'
     ],
     entry_points={
         'console_scripts': {

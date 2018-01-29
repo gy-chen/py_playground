@@ -13,7 +13,8 @@ setup(
         'opencv-python',
         'pynput',
         'pyaudio',
-        'google-cloud-speech'
+        'google-cloud-speech',
+        'google-cloud-vision'
     ],
     entry_points={
         'console_scripts': {

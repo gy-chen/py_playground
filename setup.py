@@ -14,7 +14,9 @@ setup(
         'pynput',
         'pyaudio',
         'google-cloud-speech',
-        'google-cloud-vision'
+        'google-cloud-vision',
+        'tornado',
+        'pykka'
     ],
     entry_points={
         'console_scripts': {

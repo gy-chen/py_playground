@@ -1,3 +1,6 @@
+import faker
+
+
 def print_received():
     received = None
     while True:
@@ -5,12 +8,18 @@ def print_received():
         print("Hello,", received)
 
 
-if __name__ == '__main__':
-    import faker
-
+def name_generator(times):
     fake = faker.Faker()
-    generator = print_received()
-    next(generator)
-    for _ in range(10):
-        caller_received = generator.send(fake.name())
-        print("Caller received:", caller_received)
+    for _ in range(times):
+        yield fake.name()
+
+
+def generate_10_names():
+    yield from name_generator(10)
+
+
+if __name__ == '__main__':
+    print_received_generator = print_received()
+    next(print_received_generator)
+    for name in generate_10_names():
+        print_received_generator.send(name)

@@ -12,10 +12,12 @@ def name_generator(times):
     fake = faker.Faker()
     for _ in range(times):
         yield fake.name()
+    return 'Hello from name generator'
 
 
 def generate_10_names():
-    yield from name_generator(10)
+    result = yield from name_generator(10)
+    print("yield from statement received:", result)
 
 
 if __name__ == '__main__':

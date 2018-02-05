@@ -22,4 +22,5 @@ if __name__ == '__main__':
     print_received_generator = print_received()
     next(print_received_generator)
     for name in generate_10_names():
-        print_received_generator.send(name)
+        caller_received = print_received_generator.send(name)
+        print("Caller received:", caller_received)

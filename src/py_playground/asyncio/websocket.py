@@ -5,6 +5,8 @@ from faker import Faker
 
 fake = Faker()
 
+connected = set()
+
 
 async def word_generator(websocket, path):
     while True:
@@ -19,8 +21,28 @@ async def client(name):
             print("{} Received {}".format(name, word))
 
 
+async def hello_on_someone_connected(websocket, path):
+    connected.add(websocket)
+
+    async def send_hello(ws):
+        try:
+            await ws.send("Hello!")
+        except websockets.ConnectionClosed:
+            pass
+
+    await asyncio.wait([send_hello(ws) for ws in connected])
+
+    while True:
+        try:
+            pong_waiter = await websocket.ping()
+            await asyncio.wait_for(pong_waiter, timeout=1)
+        except (asyncio.TimeoutError, websockets.ConnectionClosed):
+            connected.remove(websocket)
+            break
+
+
 async def server():
-    await websockets.serve(word_generator, 'localhost', 4413)
+    await websockets.serve(hello_on_someone_connected, 'localhost', 4413)
 
 
 def start():

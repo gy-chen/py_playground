@@ -16,8 +16,10 @@ setup(
         'google-cloud-speech',
         'google-cloud-vision',
         'tornado',
-        'pykka'
+        'pykka',
+        'python-socketio'
     ],
+    scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={
         'console_scripts': {
             'scope_demo=py_playground.flask.scope_demo:run',

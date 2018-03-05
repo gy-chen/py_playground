@@ -17,6 +17,9 @@
         socket.emit('cat', null, function (data) {
             console.log('cat received:', data);
         });
+        socket.emit('binary', null, function (data) {
+            console.log('binary received:', data);
+        })
     });
     socket.on('disconnect', function () {
         console.log('disconnected');

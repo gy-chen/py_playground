@@ -1,3 +1,4 @@
+import os
 import socketio
 from flask import Flask, render_template
 
@@ -18,6 +19,11 @@ def on_dog(sid, data):
 @sio.on('cat')
 def on_cat(sid, data):
     return "Meow"
+
+
+@sio.on('binary')
+def on_binary(sid, data):
+    return os.urandom(32)
 
 
 app = socketio.Middleware(sio, app)

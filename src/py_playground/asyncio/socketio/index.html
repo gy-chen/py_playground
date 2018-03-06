@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SocketIO client</title>
+</head>
+<body>
+<p>Open console of the browser to see the results.</p>
+<script src="./socketio.js"></script>
+<script>
+    var socket = io('http://127.0.0.1:8000');
+    socket.on('connect', function () {
+        console.log('connected');
+        socket.emit('binary', new ArrayBuffer(8), function (data) {
+            console.log('sent binary')
+        })
+
+        socket.on('binary', function(data) {
+            console.log('received', data);
+        })
+    });
+    socket.on('disconnect', function () {
+        console.log('disconnected');
+    });
+</script>
+</body>
+</html>

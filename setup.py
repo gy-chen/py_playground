@@ -17,7 +17,8 @@ setup(
         'google-cloud-vision',
         'tornado',
         'pykka',
-        'python-socketio'
+        'python-socketio',
+        'aiohttp'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

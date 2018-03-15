@@ -1,9 +1,11 @@
 """Record some usage of Numpy
 
+TODO maybe I should just use Jupyter Notebook to record these.
 """
-import numpy as np
 import functools
 import operator
+import scipy.cluster.vq
+import numpy as np
 
 
 def pick(from_array, pick_array):
@@ -22,9 +24,49 @@ def operate(array, operate):
     """By default, can perform operate to every individual element of np array.
 
     >>> operate(np.array([1,2,3]), functools.partial(operator.mul, 2))
+    array([2, 4, 6])
 
     :param array:
     :param operate:
     :return:
     """
     return operate(array)
+
+
+def vstack(arrays):
+    """Suit for organize colors
+
+    >>> a1 = np.array([20, 20, 20])
+    >>> a2 = np.array([[234, 234, 234], [234, 234, 234]])
+    >>> a3 = np.array([40, 40, 40])
+    >>> np.vstack((a1, a2, a3))
+    array([[ 20,  20,  20],
+           [234, 234, 234],
+           [234, 234, 234],
+           [ 40,  40,  40]])
+
+    :param arrays:
+    :return:
+    """
+    return np.vstack(arrays)
+
+
+def match_nearest_code(obs, code_book):
+    """If want to match features to results of Kmeans or something like that.
+
+    >>> obs = np.array([2, 8, 12, 18])
+    >>> code_book = np.array([5, 10, 15])
+    >>> scipy.cluster.vq.vq(obs, code_book)
+    (array([0, 1, 1, 2]), array([ 3.,  2.,  2.,  3.]))
+
+    :param obs:
+    :param code_book:
+    :return:
+    """
+    return scipy.cluster.vq.vq(obs, code_book)
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()

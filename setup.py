@@ -18,7 +18,9 @@ setup(
         'tornado',
         'pykka',
         'python-socketio',
-        'aiohttp'
+        'aiohttp',
+        'scipy',
+        'quart'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

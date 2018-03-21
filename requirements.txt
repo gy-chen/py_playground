@@ -11,3 +11,5 @@ tornado
 pykka
 python-socketio
 aiohttp
+scipy
+quart

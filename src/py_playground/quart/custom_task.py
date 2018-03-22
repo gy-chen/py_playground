@@ -7,7 +7,7 @@ from ssl import SSLContext
 from quart import Quart
 from quart.serving import Server
 from types import ModuleType
-from typing import Dict, List, Optional, Tuple, TYPE_CHECKING, Union  # noqa: F401
+from typing import Dict, List, Optional, Tuple, TYPE_CHECKING, Union, Coroutine  # noqa: F401
 
 app = Quart(__name__)
 
@@ -39,7 +39,7 @@ async def _observe_changes() -> bool:
 
 def run_app(
         app: 'Quart',
-        *custom_tasks,
+        *custom_tasks: List[Coroutine],
         host: str = '127.0.0.1',
         port: int = 5000,
         access_log_format: str,

@@ -51,6 +51,24 @@ def vstack(arrays):
     return np.vstack(arrays)
 
 
+def hstack(arrays):
+    """Suit for organize colors
+
+    >>> r = np.array([[20], [234], [234], [40]])
+    >>> g = np.array([[20], [234], [234], [40]])
+    >>> b = np.array([[20], [234], [234], [40]])
+    >>> np.hstack((r, g, b))
+    array([[ 20,  20,  20],
+           [234, 234, 234],
+           [234, 234, 234],
+           [ 40,  40,  40]])
+
+    :param arrays:
+    :return:
+    """
+    return np.hstack(arrays)
+
+
 def match_nearest_code(obs, code_book):
     """If want to match features to results of Kmeans or something like that.
 

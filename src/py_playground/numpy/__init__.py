@@ -84,6 +84,21 @@ def match_nearest_code(obs, code_book):
     return scipy.cluster.vq.vq(obs, code_book)
 
 
+def get_most_frequence_element(array):
+    """Get most frequence appear element in the array
+
+    >>> a1 = np.array([0, 1, 0, 1, 2, 0, 1, 0, 2])
+    >>> unique, count = np.unique(a1, return_counts=True)
+    >>> unique[count.argmax()]
+    0
+
+    :param array:
+    :return:
+    """
+    unique, count = np.unique(array, return_counts=True)
+    return unique[count.argmax()]
+
+
 if __name__ == "__main__":
     import doctest
 

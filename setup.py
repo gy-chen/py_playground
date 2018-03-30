@@ -20,7 +20,8 @@ setup(
         'python-socketio',
         'aiohttp',
         'scipy',
-        'quart'
+        'quart',
+        'Authlib'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

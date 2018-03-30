@@ -13,3 +13,4 @@ python-socketio
 aiohttp
 scipy
 quart
+Authlib

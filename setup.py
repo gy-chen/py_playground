@@ -21,7 +21,8 @@ setup(
         'aiohttp',
         'scipy',
         'quart',
-        'Authlib'
+        'Authlib',
+        'requests_oauthlib'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

@@ -22,7 +22,8 @@ setup(
         'scipy',
         'quart',
         'Authlib',
-        'requests_oauthlib'
+        'requests_oauthlib',
+        'flask_sqlalchemy'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

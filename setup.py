@@ -23,7 +23,8 @@ setup(
         'quart',
         'Authlib',
         'requests_oauthlib',
-        'flask_sqlalchemy'
+        'flask_sqlalchemy',
+        'flask_jwt'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

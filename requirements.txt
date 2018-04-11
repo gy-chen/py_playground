@@ -16,3 +16,4 @@ quart
 Authlib
 requests_oauthlib
 flask_sqlalchemy
+flask_jwt

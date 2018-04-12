@@ -1,7 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 # initialize using db.init_app later
 db = SQLAlchemy()
+migrate = Migrate(db)
 
 
 class Base(db.Model):

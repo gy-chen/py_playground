@@ -36,7 +36,7 @@ class User(Base):
             return user
         user = cls(email=profile.email, name=profile.name)
         db.session.add(user)
-        db.seesion.commit()
+        db.session.commit()
         return user
 
     def to_dict(self):

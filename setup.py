@@ -24,7 +24,8 @@ setup(
         'Authlib',
         'requests_oauthlib',
         'flask_sqlalchemy',
-        'flask_jwt'
+        'flask_jwt',
+        'flask_migrate'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

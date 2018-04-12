@@ -11,14 +11,14 @@ def fetch_identity(payload):
     return User.query.get(user_id)
 
 
+@bp.route('/auth')
 def auth_request_callback():
     app = _get_app()
-    callback_uri = url_for('jwt.authenticate_callback', _external=True)
+    callback_uri = url_for('.authenticate_callback', _external=True)
     return app.authorize_redirect(callback_uri)
 
 
 jwt = JWT(identity_handler=fetch_identity)
-jwt.auth_request_callback = auth_request_callback
 
 
 @bp.route('/callback')
@@ -28,8 +28,16 @@ def authenticate_callback():
     token = app.authorize_access_token()
     user_info = app.profile()
     user = User.get_or_create(user_info)
+    token['sub'] = user_info['sub']
     Connect.create_token('google', token, user)
-    return jsonify(_default_jwt_encode_handler(user))
+    return _default_jwt_encode_handler(user)
+
+
+@bp.route('/profile')
+@jwt_required()
+def profile():
+    user = current_identity
+    return jsonify(user.to_dict())
 
 
 def _get_app():
@@ -37,5 +45,6 @@ def _get_app():
 
 
 def init_app(app):
+    app.config['JWT_AUTH_URL_RULE'] = app.config.get('JWT_AUTH_URL_RULE', None)
     jwt.init_app(app)
     app.register_blueprint(bp)

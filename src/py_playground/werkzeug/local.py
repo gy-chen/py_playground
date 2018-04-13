@@ -16,6 +16,8 @@ def application(environ, start_response):
     return response(environ, start_response)
 
 
+application = local_manager.make_middleware(application)
+
 if __name__ == '__main__':
     from wsgiref.simple_server import make_server
 

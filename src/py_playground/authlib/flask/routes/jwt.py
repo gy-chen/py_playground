@@ -1,7 +1,7 @@
 from flask import Blueprint, url_for, jsonify
 from authlib.client.apps import get_app
 from ..models import User, Connect
-from flask_jwt import JWT, jwt_required, current_identity, _default_jwt_encode_handler
+from flask_jwt_simple import JWTManager, jwt_required, create_jwt, get_jwt_identity
 
 bp = Blueprint('jwt', __name__)
 
@@ -18,7 +18,7 @@ def auth_request_callback():
     return app.authorize_redirect(callback_uri)
 
 
-jwt = JWT(identity_handler=fetch_identity)
+jwt = JWTManager()
 
 
 @bp.route('/callback')
@@ -30,13 +30,14 @@ def authenticate_callback():
     user = User.get_or_create(user_info)
     token['sub'] = user_info['sub']
     Connect.create_token('google', token, user)
-    return _default_jwt_encode_handler(user)
+    return create_jwt(user.id)
 
 
 @bp.route('/profile')
-@jwt_required()
+@jwt_required
 def profile():
-    user = current_identity
+    identity = get_jwt_identity()
+    user = fetch_identity({'identity': identity})
     return jsonify(user.to_dict())
 
 
@@ -45,6 +46,6 @@ def _get_app():
 
 
 def init_app(app):
-    app.config['JWT_AUTH_URL_RULE'] = app.config.get('JWT_AUTH_URL_RULE', None)
+    app.config.setdefault('JWT_SECRET_KEY', 'monshin4413')
     jwt.init_app(app)
     app.register_blueprint(bp)

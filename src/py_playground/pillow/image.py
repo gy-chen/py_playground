@@ -18,6 +18,15 @@ def create_palette_random_image():
     return image
 
 
+def load_image_pixels(img):
+    """Get pixels of the image
+
+        :param img: PIL image instance
+        :return: numpy array that  contain pixels data and has same shape of the image
+        """
+    return np.asarray(img)
+
+
 if __name__ == '__main__':
     image = create_palette_random_image()
     image.save('test.png')

@@ -1,5 +1,5 @@
 def generate_ansi_color_string(string, color):
-    return "\e[{}m{}".format(color, string)
+    return "\033[{}m{}".format(color, string)
 
 
 if __name__ == '__main__':

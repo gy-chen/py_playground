@@ -35,7 +35,7 @@ def _convert_pixels_to_ansi_strings(pixels):
     pixels = pixels.reshape(-1, 3)
     color_book_indexes, _ = vq(pixels, ANSI_COLOR_BOOK)
     ansi_strings = np.asarray(
-        [ansi.generate_ansi_color_string(' ', color.get_ansi_bg_code(ANSI_COLOR_BOOK[index])) for index in
+        [ansi.generate_ansi_bg_color_string(' ', ANSI_COLOR_BOOK[index]) for index in
          color_book_indexes]).reshape(
         original_shape[:2])
     return ansi_strings
@@ -43,8 +43,9 @@ def _convert_pixels_to_ansi_strings(pixels):
 
 if __name__ == '__main__':
     from PIL import Image
+    from .ansi import get_ansi_reset_string
 
     img = Image.open('t2.jpg')
     ansi_strings = convert_image_to_ansi_strings(img)
     for line in ansi_strings:
-        print(''.join(line))
+        print(get_ansi_reset_string().join(line))

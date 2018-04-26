@@ -17,10 +17,6 @@ class Color:
     WHITE = (229, 229, 229)
 
 
-class ANSICode:
-    RESET = 0
-
-
 class ANSICodeBG:
     """Store basic ANSI color BG Code.
 

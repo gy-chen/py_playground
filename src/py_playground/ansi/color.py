@@ -1,4 +1,4 @@
-class Color:
+class ANSIBasicColor:
     """Store basic ANSI color.
 
         Stored color using (R, G, B) tuple.
@@ -48,25 +48,25 @@ class ANSICodeFG:
 
 
 MAP_COLOR_TO_ANSI_BG_CODE = {
-    Color.BLACK: ANSICodeBG.BLACK,
-    Color.RED: ANSICodeBG.RED,
-    Color.GREEN: ANSICodeBG.GREEN,
-    Color.YELLOW: ANSICodeBG.YELLOW,
-    Color.BLUE: ANSICodeBG.BLUE,
-    Color.MAGENTA: ANSICodeBG.MAGENTA,
-    Color.CYAN: ANSICodeBG.CYAN,
-    Color.WHITE: ANSICodeBG.WHITE
+    ANSIBasicColor.BLACK: ANSICodeBG.BLACK,
+    ANSIBasicColor.RED: ANSICodeBG.RED,
+    ANSIBasicColor.GREEN: ANSICodeBG.GREEN,
+    ANSIBasicColor.YELLOW: ANSICodeBG.YELLOW,
+    ANSIBasicColor.BLUE: ANSICodeBG.BLUE,
+    ANSIBasicColor.MAGENTA: ANSICodeBG.MAGENTA,
+    ANSIBasicColor.CYAN: ANSICodeBG.CYAN,
+    ANSIBasicColor.WHITE: ANSICodeBG.WHITE
 }
 
 MAP_COLOR_TO_ANSI_FG_CODE = {
-    Color.BLACK: ANSICodeFG.BLACK,
-    Color.RED: ANSICodeFG.RED,
-    Color.GREEN: ANSICodeFG.GREEN,
-    Color.YELLOW: ANSICodeFG.YELLOW,
-    Color.BLUE: ANSICodeFG.BLUE,
-    Color.MAGENTA: ANSICodeFG.MAGENTA,
-    Color.CYAN: ANSICodeFG.CYAN,
-    Color.WHITE: ANSICodeFG.WHITE
+    ANSIBasicColor.BLACK: ANSICodeFG.BLACK,
+    ANSIBasicColor.RED: ANSICodeFG.RED,
+    ANSIBasicColor.GREEN: ANSICodeFG.GREEN,
+    ANSIBasicColor.YELLOW: ANSICodeFG.YELLOW,
+    ANSIBasicColor.BLUE: ANSICodeFG.BLUE,
+    ANSIBasicColor.MAGENTA: ANSICodeFG.MAGENTA,
+    ANSIBasicColor.CYAN: ANSICodeFG.CYAN,
+    ANSIBasicColor.WHITE: ANSICodeFG.WHITE
 }
 
 

@@ -3,22 +3,27 @@ from scipy.cluster.vq import vq
 from . import color, ansi
 
 ANSI_COLOR_BOOK = [
-    color.Color.BLACK,
-    color.Color.RED,
-    color.Color.GREEN,
-    color.Color.YELLOW,
-    color.Color.BLUE,
-    color.Color.MAGENTA,
-    color.Color.CYAN,
-    color.Color.WHITE
+    color.ANSIBasicColor.BLACK,
+    color.ANSIBasicColor.RED,
+    color.ANSIBasicColor.GREEN,
+    color.ANSIBasicColor.YELLOW,
+    color.ANSIBasicColor.BLUE,
+    color.ANSIBasicColor.MAGENTA,
+    color.ANSIBasicColor.CYAN,
+    color.ANSIBasicColor.WHITE
 ]
+
+
+def print_ansi_strings(ansi_strings):
+    for line in ansi_strings:
+        print(''.join(line), end=ansi.ansi_reset_string + '\n')
 
 
 def convert_image_to_ansi_strings(img):
     """Convert image to ansi color string
 
         :param img: PIL image instance
-        :return: string
+        :return: numpy 2d array that in same size of the img. array's value in ansi string.
         """
     img = img.convert(mode='RGB')
     img_array = np.asarray(img)
@@ -26,26 +31,21 @@ def convert_image_to_ansi_strings(img):
 
 
 def convert_image_array_to_ansi_strings(img_array):
-    ansi_strings = _convert_pixels_to_ansi_strings(img_array)
-    return ansi_strings
+    pixels = img_array.reshape(-1, 3)
+    ansi_strings = _convert_pixels_to_ansi_strings(pixels)
+    return ansi_strings.reshape(img_array.shape[:2])
 
 
 def _convert_pixels_to_ansi_strings(pixels):
-    original_shape = pixels.shape
-    pixels = pixels.reshape(-1, 3)
     color_book_indexes, _ = vq(pixels, ANSI_COLOR_BOOK)
     ansi_strings = np.asarray(
-        [ansi.generate_ansi_bg_color_string(' ', ANSI_COLOR_BOOK[index]) for index in
-         color_book_indexes]).reshape(
-        original_shape[:2])
+        [ansi.generate_ansi_bg_color_string('　', ANSI_COLOR_BOOK[index]) for index in
+         color_book_indexes])
     return ansi_strings
 
 
 if __name__ == '__main__':
     from PIL import Image
-    from .ansi import get_ansi_reset_string
 
     img = Image.open('t2.jpg')
-    ansi_strings = convert_image_to_ansi_strings(img)
-    for line in ansi_strings:
-        print(get_ansi_reset_string().join(line))
+    print_ansi_strings(convert_image_to_ansi_strings(img))

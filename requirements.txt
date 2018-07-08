@@ -19,3 +19,4 @@ flask_sqlalchemy
 flask_jwt
 flask_migrate
 flask-jwt-simple
+click

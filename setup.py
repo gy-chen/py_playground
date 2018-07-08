@@ -26,7 +26,8 @@ setup(
         'flask_sqlalchemy',
         'flask_jwt',
         'flask_migrate',
-        'flask-jwt-simple'
+        'flask-jwt-simple',
+        'click'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

@@ -27,7 +27,10 @@ setup(
         'flask_jwt',
         'flask_migrate',
         'flask-jwt-simple',
-        'click'
+        'click',
+        'graphene_sqlalchemy',
+        'Flask-GraphQL',
+        'SQLAlchemy'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={

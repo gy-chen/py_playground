@@ -20,3 +20,6 @@ flask_jwt
 flask_migrate
 flask-jwt-simple
 click
+graphene_sqlalchemy
+Flask-GraphQL
+SQLAlchemy

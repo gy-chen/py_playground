@@ -9,13 +9,14 @@ class SQLAlchemy:
     """
 
     def __init__(self, app=None):
-        self._app = None
+        self._app = app
         self.session = self._create_scoped_session()
         if app is not None:
             self.init_app(app)
 
     def init_app(self, app):
-        self._app = app
+        ctx = _app_ctx_stack.top
+        ctx['sqlalchemy_session'] = self.session
 
         @app.teardown_appcontext
         def shutdown_session(response_or_exc):

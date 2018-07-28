@@ -99,6 +99,24 @@ def get_most_frequence_element(array):
     return unique[count.argmax()]
 
 
+def axis_demo():
+    """Demo what axis means
+
+    >>> a1 = np.arange(1, 7).reshape((-1, 3))
+    >>> np.sum(a1, axis=0, keepdims=True)
+    array([[5, 7, 9]])
+    >>> np.sum(a1, axis=1, keepdims=True)
+    array([[ 6],
+           [15]])
+
+    :param array:
+    :return:
+    """
+    a1 = np.arange(1, 7).reshape((-1, 3))
+    assert False not in (np.sum(a1, axis=0, keepdims=True) == np.array([[5, 7, 9]]))
+    assert False not in (np.sum(a1, axis=1, keepdims=True) == np.array([[6], [15]]))
+
+
 if __name__ == "__main__":
     import doctest
 

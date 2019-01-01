@@ -1,6 +1,7 @@
 """Merge two images
 """
 import argparse
+import numpy as np
 from PIL import Image
 
 parse = argparse.ArgumentParser()
@@ -15,10 +16,16 @@ def merge(images):
     return result
 
 
+def merge_np(images):
+    images = [np.asarray(img) for img in images]
+    result = np.min(images, axis=0)
+    return Image.fromarray(result)
+
+
 def main():
     args = parse.parse_args()
     images = [Image.open(img) for img in args.images]
-    merged = merge(images)
+    merged = merge_np(images)
     merged.save('output.jpg')
 
 

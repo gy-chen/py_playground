@@ -23,3 +23,6 @@ click
 graphene_sqlalchemy
 Flask-GraphQL
 SQLAlchemy
+h5py
+googlemaps
+twisted

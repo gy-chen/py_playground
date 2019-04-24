@@ -30,7 +30,10 @@ setup(
         'click',
         'graphene_sqlalchemy',
         'Flask-GraphQL',
-        'SQLAlchemy'
+        'SQLAlchemy',
+        'h5py',
+        'googlemaps',
+        'twisted'
     ],
     scripts=['src/py_playground/flask/bin/play_socketio'],
     entry_points={
